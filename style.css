@@ -1,0 +1,317 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000; /* fallback color */
+}
+
+/* ✅ Wrapper that holds the full-page background image */
+.background-wrapper {
+  background-image: url('resources/bg-orange-city.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  min-height: 100vh;
+}
+
+/* ======================
+   ✅ HEADER SECTION
+   ====================== */
+header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+}
+
+.logo img {
+  height: 85px;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navbar */
+.navbar a {
+  margin: 0 15px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+  font-weight: 400;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.navbar a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background-color: #c7aa63;
+  transition: width 0.3s ease;
+}
+.navbar a:hover {
+  color: #c7aa63;
+}
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* ======================
+   ✅ SLIDER
+   ====================== */
+.slider {
+  width: 100%;
+  overflow: visible;
+  perspective: 1000px;
+}
+.slider:hover .slide-track {
+  animation-play-state: paused;
+}
+.slide-track {
+  display: flex;
+  width: calc(250px * 12);
+  animation: scroll 25s linear infinite;
+  overflow: visible;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.slide {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* ✅ Gradient circular border */
+.gradient-ring {
+  padding: 4px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.8);
+  opacity: 0.5;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gradient-ring img {
+  width: 169px;
+  height: 169px;
+  border-radius: 50%;
+  background: white;
+  padding: 2px;
+  object-fit: cover;
+}
+
+/* Active center image */
+.gradient-ring.active {
+  transform: scale(1.4);
+  opacity: 1;
+  z-index: 10;
+}
+
+/* ======================
+   ✅ SECOND SECTION
+   ====================== */
+.hero-section {
+  text-align: center;
+  padding: 100px 20px;
+  margin-top: 0;
+  color: #fff;
+  min-height: 100vh;
+}
+
+@font-face {
+  font-family: 'Amsterdam One';
+  src: url('resources/AmsterdamOne-eZ12l.ttf') format('truetype');
+}
+
+.script-heading {
+  font-family: 'Amsterdam One', cursive;
+  font-size: 50px;
+  margin-bottom: -14px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+.main-heading {
+  font-size: 39px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+.subheading {
+  font-size: 33px;
+  font-weight: 550;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Scroll fade effect */
+.fade-in {
+  animation: fadeIn 1s ease-in-out both;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Submit Button  */
+#register {
+  font-size: 17px;
+  font-family: 'Poppins', sans-serif;
+  height: 56px;
+  width: 179px;
+  margin-top: 63px;
+  background: #ffffff;
+  display: inline-block;
+  padding: 17px 16px;
+  border-radius: 8px;
+}
+
+#register a {
+  text-decoration: none;
+  color: #000000;
+}
+
+/* ✅ Responsive Design */
+
+@media (max-width: 1024px) {
+  .header-top {
+    padding: 20px 40px;
+  }
+
+  .gradient-ring img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 900px) {
+  .gradient-ring img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .gradient-ring img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gradient-ring {
+    transform: scale(0.7);
+  }
+
+  .gradient-ring.active {
+    transform: scale(1.1);
+  }
+
+  .gradient-ring img {
+    width: 125px;
+    height: 125px;
+  }
+
+  .main-heading {
+    font-size: 30px;
+  }
+
+  .subheading {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 431px) {
+  .gradient-ring img {
+    width: 125px;
+    height: 125px;
+  }
+
+  .slide {
+    width: 100px;
+  }
+
+  .header-top {
+    padding: 15px 20px;
+  }
+
+  .navbar a {
+    margin: 5px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 300px) {
+  .gradient-ring img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .main-heading {
+    font-size: 22px;
+  }
+
+  .subheading {
+    font-size: 16px;
+  }
+
+  .navbar a {
+    font-size: 12px;
+  }
+}
